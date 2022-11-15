@@ -1,0 +1,218 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    background: #ffffff;
+    background-position-y: 40%;
+    font-family: "Proxima Nova", Arial, sans-serif;
+}
+
+.logo{
+    margin-left: 2em;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.navbar {
+
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 5em;
+    margin-top: 1em;
+    font-family: "Proxima Nova", Arial, sans-serif;
+    font-size: 14px;
+    z-index: 100;
+}
+
+.navbar ul {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-right: 2em;
+}
+
+.navbar li {
+    list-style: none;
+    font-weight: bold;
+    text-align: center;
+    padding: 1em 1em;
+    margin: 0px 8px;
+    border-radius: 20px;
+}
+
+.navbar li a{
+    text-decoration: none;
+    color: #071835;
+}
+
+.navbar .nav_active {
+    background: #00a5e0;
+    padding: .5em 1em;
+    -webkit-user-select: none;
+    user-select: none;
+    color: #FFFFFF;
+}
+
+.navbar .nav_active a{
+    color: #fff;
+}
+
+.container {
+    position: relative;
+    top: 20px;
+    left: 900px;
+    width: 400px;
+    height: 6x65px;
+
+    position: relative;
+    padding: 50px 50px;
+    background: #ffe6be;
+    border-radius: 3rem;
+    display: flex;
+
+}
+
+.container .input_code .form_label{
+    position: relative;
+    font-weight: 600;
+    font-size: larger;
+    top: -10px ;
+    left: 100px;
+    /* font-size:larger; */
+}
+
+.container .input_code input[type=email] {
+    width: 100%;
+    background-color: #fcebf1;
+    border: 2px solid #aaa;
+    border-radius: 1rem;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .3s;
+}
+
+.container .input_code input[type=email]:focus {
+    border-color: dodgerBlue;
+    box-shadow: 0 0 8px 0 dodgerBlue;
+}
+
+.container .input_code input[type=password] {
+    width: 100%;
+    border: 2px solid #aaa;
+    background-color: #fcebf1;
+    border-radius: 1rem;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .3s;
+}
+
+.container .input_code input[type=password  ]:focus {
+    border-color: dodgerBlue;
+    box-shadow: 0 0 8px 0 dodgerBlue;
+}
+
+.container .input_code input[type=text] {
+    width: 100%;
+    border: 2px solid #aaa;
+    background-color: #fcebf1;
+    border-radius: 1rem;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .3s;
+}
+
+.container .input_code input[type=text  ]:focus {
+    border-color: dodgerBlue;
+    box-shadow: 0 0 8px 0 dodgerBlue;
+}
+
+.container .input_code input[type=number] {
+    width: 100%;
+    border: 2px solid #aaa;
+    background-color: #fcebf1;
+    border-radius: 1rem;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .3s;
+}
+
+.container .input_code input[type=number  ]:focus {
+    border-color: dodgerBlue;
+    box-shadow: 0 0 8px 0 dodgerBlue;
+}
+
+
+.container .input_code select{
+    width: 100%;
+    border: 2px solid #aaa;
+    background-color: #fcebf1;
+    border-radius: 1rem;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .3s;
+}
+
+.container .input_code select:focus {
+    border-color: dodgerBlue;
+    box-shadow: 0 0 8px 0 dodgerBlue;
+}
+
+
+
+.join_btn {
+    background: #fff;
+    border-radius: 40px;
+    text-align: center;
+    box-sizing: border-box;
+    color: white;
+    display: block;
+    height: 40px;
+    font-size: 1.4em;
+    padding: 2px;
+    position: relative;
+    text-decoration: none;
+    width: 150px;
+    z-index: 2;
+
+    position: relative;
+    left: 75px;
+    top: 30px;
+  }
+  
+  
+  .join_btn .bn31span {
+    align-items: center;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    transition: background 0.5s ease;
+    width: 100%;
+    color: #00a5e0;
+  }
+  
+.icon_1 img{
+    position: absolute;
+    left: 10%;
+    top: 120px;
+    width: 600px;
+    height: 500px;
+}

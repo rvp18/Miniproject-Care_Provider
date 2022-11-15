@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="WC_Card.css">
+    <title>House Care Profiles</title>
+
+</head>
+
+<body>
+
+    <div class="navbar">
+        <img src="https://pbs.twimg.com/media/Fe-xdySVQAA5PW3?format=png&name=240x240" alt="Logo" class="logo">
+        <ul>
+            <li><a href="./Dashboard.html">Home</a></li>
+
+            <li class="nav_active"><a href="./Formforjob.html"><span class="joinnow">Join Now</span></a></li>
+        </ul>
+    </div>
+
+    <div class="card_container" id="card_container">
+    </div>
+
+    <div>
+        <i id="loading" class="fa-solid fa-spinner fa-5x"></i>
+    </div>
+    <script type="module">
+
+
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
+        import { getDatabase, set, ref, push, child, onValue } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBNCupcSbQudULeZzaVoIUKhMlPDOm6JHA",
+            authDomain: "wecare-7dcc7.firebaseapp.com",
+            databaseURL: "https://wecare-7dcc7-default-rtdb.firebaseio.com",
+            projectId: "wecare-7dcc7",
+            storageBucket: "wecare-7dcc7.appspot.com",
+            messagingSenderId: "492609910212",
+            appId: "1:492609910212:web:8d7f385e1d9e29e5cb6091"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+
+        function load_data() {
+
+            // window.map = new Map() ;
+            window.emails = [];
+
+
+
+            const dbRef = ref(database, 'care_givers/');
+
+            onValue(dbRef, (careGiversListFromDB) => {
+
+                const noOfRecords = careGiversListFromDB.size;
+
+                // $(window).on('load', function () {
+                //     $('#loading').hide();
+                // })
+                document.getElementById("loading").style.opacity = 0;
+
+                careGiversListFromDB.forEach((careGiver) => {
+                    const careGiverKey = careGiver.key;
+                    const careGiverData = careGiver.val();
+
+                    // console.log(careGiverData.resume_in_string.src());
+
+
+
+
+
+                    //  window.to = careGiverData.email;
+                    // console.log(careGiversListFromDB.indexOf(careGiver[0]));
+
+                    if (careGiverData.service == "House Keeper") {
+
+                        emails.push(careGiverData.email);
+
+                        var wc_info = document.getElementById('card_container');
+                        window.info = `
+                <div class="person_card" id="person_card">
+                    <div class="person_intro">
+                        <div class="person_img" ><i class="fa-solid fa-user-shield fa-5x" ></i> </div>
+
+                    </div>
+
+                    <div class="person_info">
+                        <div class="pi_content">
+
+
+                            <div class="pi_content1" id="pi_content1">
+                                <p class="pi_title">${careGiverData.name}</p>
+                                <div class="badges">
+                                    <ul>
+                                        <li><i class="fa-solid fa-shield-halved"></i></li>
+                                        <li><i class="fa-solid fa-circle-check"></i></li>
+                                        <li><i class="fa-regular fa-heart"></i></li>
+                                        <li><i class="fa-solid fa-font-awesome"></i></li>
+                                    </ul>
+
+                                </div>
+                            </div>
+
+                            <div class="pi_content2">
+                                <ul>
+                                    <li><span id="1">${careGiverData.exp}</span><br>years exp.</li>
+                                    <li><span id="2">$${careGiverData.rate}</span><br>Hourly rate</li>
+                                    <li><span id="3">${careGiverData.age}</span><br>Age</li>
+                                    <li><span id="4">${careGiverData.service}</span><br></li>
+                                    <li><span id="5">${careGiverData.type}</span><br></li>
+                                    <li><span id="6">${careGiverData.pincode}</span><br></li>
+                                    <li><span id="7">${careGiverData.email}</span><br></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="pi_others">
+                        <div class="pio_content2">
+                            <a  onclick="sendemail();i_popup()">Book ${careGiverData.name}</a>
+                            
+                            <!--- <a onclick="i_popup()" >View Details of ${careGiverData.name}</a> -->
+                            <!---  <img class="r1" style='width: 90px; height: 90px;' src=${careGiverData.resume_in_string} >  --> 
+
+                            <a href="${careGiverData.resume_in_string} " download >Download Resume</a>
+
+                        </div> 
+                    </div>
+                    
+                </div>
+
+                <div class="overlay1" id="i_popup">
+                                <div class="i_popup_content">
+                                    <h4>Booked,Mail Sent</h4>
+                                    <p>Our Care provider will contact you for further process</p>
+                                <a href="#" onclick="i_popup_close()" class="close_i_popup">&times;</a>
+                            </div>
+                            
+                            
+                
+                `
+
+
+
+                        wc_info.innerHTML += info;
+
+                    }
+                });
+            }
+                ,
+                {
+                    onlyOnce: true
+                });
+        };
+
+        load_data();
+
+
+
+    </script>
+
+    <script>
+
+        function i_popup() {
+            document.getElementById("i_popup").style.visibility = "visible";
+            document.getElementById("i_popup").style.opacity = 1;
+            console.log("CLicked")
+
+        }
+        function i_popup_close() {
+            document.getElementById("i_popup").style.visibility = "hidden";
+            document.getElementById("i_popup").style.opacity = 0;
+        }
+        i_popup_close();
+
+
+    </script>
+
+
+
+    <script src=" https://smtpjs.com/v3/smtp.js"></script>
+
+    <script>
+
+        function sendemail() {
+            console.log(emails);
+
+            Email.send({
+                Host: "smtp.elasticemail.com",
+                Username: "wecare.apsit@gmail.com",
+                Password: "95E62EFF423C0C3DCFCEE151109100400CEA",
+                To: emails,
+                From: "wecare.apsit@gmail.com",
+                Subject: "You Have been booked",
+                Body: "And this is the body"
+            }).then(
+                message => alert(message)
+            );
+
+        }
+
+    </script>
+</body>
+
+</html>

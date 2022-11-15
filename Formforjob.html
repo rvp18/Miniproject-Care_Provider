@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for care</title>
+
+    <link rel="stylesheet" href="Formforjob.css">
+
+    <script src="https://kit.fontawesome.com/459894a1af.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <img src="https://pbs.twimg.com/media/Fe-xdySVQAA5PW3?format=png&name=240x240" alt="Logo" class="logo">
+        <ul>
+            <li><a href="./Dashboard.html">Home</a></li>
+
+            <li class="nav_active"><a href="#">Join Now</a></li>
+        </ul>
+    </div>
+
+    <div class="icon_1">
+        <img src="https://pbs.twimg.com/media/Fe_CgJFUYAA9s1z?format=jpg&name=4096x4096" alt="Img">
+    </div>
+
+    <div class="container">
+        <form>
+            <div class="input_code">
+
+                <div><label class="form_label">Apply Now!</label></div>
+
+                <br>
+
+                <select id="dd1" name="dd1" required>
+                    <option value="Individual" selected>Individual</option>
+                    <option value="Company">Company</option>
+                </select>
+
+                <select id="dd2" name="dd2" required>
+                    <option value="None" selected>What Service Do you offer</option>
+                    <option value="Child care Provider">Child care Provider</option>
+                    <option value="Senior Care Provider">Senior Care Provider</option>
+                    <option value="Tutor">Tutor</option>
+                    <option value="House Keeper">House Keeper</option>
+                   
+                </select>
+
+                <input type="number" placeholder="Pincode" id="pincode" name="Pincode" required>
+                <!-- <label for="password" class="form__label">Password</label> -->
+                <br>
+
+                <input type="text" placeholder="Your Full Name" id="name" name="full_name" required>
+
+                <input type="number" placeholder="Your Age" id="age" name="age" required>
+                <!-- <label for="cnf_password" class="form__label">Confirm Password</label -->
+                <br>
+
+                <input type="email" placeholder="Email" id="email" name="email" required>
+
+
+
+                <input type="number" placeholder="Your Hourly Rate" id="rate" name="rate" required>
+
+                <input type="number" placeholder="Your Expirence in Field (in years)" id="exp" name="exp" required
+                    !important>
+                <!-- <label for="email" class="form__label">Email</label> -->
+                <br>
+                <br>
+                <!-- <label>Upload Profile photo</label>
+                <input type="file" placeholder="profile_photo" id="profile_photo"> -->
+                <!-- <br>
+                <br> -->
+                <label>Upload Your Resume</label>
+                <input type="file" id="fileUpload" name="fileUpload" required />
+
+
+                <a onclick="job_form_verification()" class="join_btn" id="join_btn"><span
+                        class="bn31span">Join</span></a>
+            </div>
+    </div>
+    </form>
+    </div>
+
+
+
+
+    <script type="text/javascript">
+
+    </script>
+
+
+    <script type="module">
+
+
+
+        const toBase64 = file => new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
+
+        // join_btn.addEventListener('click', (e) => {
+
+        // });
+
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
+        import { getDatabase, set, ref, push, child } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBNCupcSbQudULeZzaVoIUKhMlPDOm6JHA",
+            authDomain: "wecare-7dcc7.firebaseapp.com",
+            databaseURL: "https://wecare-7dcc7-default-rtdb.firebaseio.com",
+            projectId: "wecare-7dcc7",
+            storageBucket: "wecare-7dcc7.appspot.com",
+            messagingSenderId: "492609910212",
+            appId: "1:492609910212:web:8d7f385e1d9e29e5cb6091"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        var r1;
+        join_btn.addEventListener('click', (e) => {
+
+            const uploadedFile = document.querySelector('#fileUpload').files[0];
+            toBase64(uploadedFile)
+                .then(res => {
+                    var r1 = res;
+                    console.log(r1);
+
+                    var name = document.getElementById('name').value;
+                    var pincode = document.getElementById('pincode').value;
+                    var email = document.getElementById('email').value;
+                    var dd1 = document.getElementById('dd1').value;
+                    var dd2 = document.getElementById('dd2').value;
+                    // var profile_photo = document.getElementById('profile_photo').value;
+                    var r2 = r1;
+                    console.log(r2);
+
+                    var age = document.getElementById('age').value;
+                    var exp = document.getElementById('exp').value;
+                    var rate = document.getElementById('rate').value;
+                    const care_givers_id = push(child(ref(database), 'care_givers')).key;
+
+                    if(pincode.length ==6  ){
+
+                        set(ref(database, 'care_givers/' + care_givers_id), {
+                        name: name,
+                        pincode: pincode,
+                        email: email,
+                        type: dd1,
+                        service: dd2,
+                        // profile_photo: profile_photo,
+                        resume_in_string: r1,
+                        age: age,
+                        exp: exp,
+                        rate: rate
+
+                    });
+
+                    alert('Applied successfully');
+
+                    }
+                    else{
+                        alert('Write Pincode Properly');                        
+                    }
+
+                    
+
+                    
+                    // window.location.replace("./Dashboard.html");
+                })
+
+            
+
+        })
+            // .catch(err => {
+            //     console.log(err);
+            // })
+
+
+
+
+    </script>
+
+</body>
+
+</html>

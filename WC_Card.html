@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="WC_card.js"></script> -->
+    <link rel="stylesheet" href="WC_Card.css">
+    <title>Cards</title>
+</head>
+
+<body>
+
+
+    <div class="navbar">
+        <img src="https://admission.apsit.org.in/cloud/adm_form/LOGO.png" alt="Logo" class="logo">
+        <ul>
+            <li><a href="./Dashboard.html">Home</a></li>
+
+            <li class="nav_active"><a href="#"><span class="joinnow">Join Now</span></a></li>
+        </ul>
+    </div>
+
+
+
+
+
+    <div class="card_container" id="card_container">
+    </div>
+
+
+
+
+    <script>
+
+        // var jsonUrl = 'https://jsonplaceholder.typicode.com/photos'
+        var jsonUrl = "https://jsonplaceholder.typicode.com/photos";
+        $.getJSON(jsonUrl, function (data) {
+
+
+
+            for (var i = 0; i < 100; i++) {
+
+                var wc_info = document.getElementById('card_container');
+                var info = `
+                            <div class="person_card" id="person_card">
+                                <div class="person_intro">
+                                    <img class="person_img"
+                                        src="https://admission.apsit.org.in/cloud/adm_form/LOGO.png"
+                                        alt="img">
+
+                                    <!--- <div class="social">
+                                        <a href="#"><i class="fa-solid fa-bolt"></i>
+                                            Active 3 hours ago
+                                        </a> 
+                                    </div>c --->
+                                </div>
+
+                                <div class="person_info">
+                                    <div class="pi_content">
+
+
+                                        <div class="pi_content1" id="pi_content1">
+                                            <p class="pi_title">${data[i].id}</p>
+                                            <div class="badges">
+                                                <ul>
+                                                    <li><i class="fa-solid fa-shield-halved"></i></li>
+                                                    <li><i class="fa-solid fa-circle-check"></i></li>
+                                                    <li><i class="fa-regular fa-heart"></i></li>
+                                                    <li><i class="fa-solid fa-font-awesome"></i></li>
+                                                </ul>
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="pi_content2">
+                                            <ul>
+                                                <li><span>${data[i].id}</span><br>years exp.</li>
+                                                <li><span>$${data[i].id}</span><br>Hourly rate</li>
+                                                <li><span>${data[i].id}</span><br>Age</li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="pi_content3">
+                                            <ul>
+                                                <li><i class="fa-solid fa-ban-smoking"></i></i>Non-smoker</li>
+                                                <li><i class="fa-solid fa-syringe"></i>Covid-19 vaccinated</li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="pi_others">
+                                    <div class="pio_content1">
+                                        <ul>
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                            <li><i class="fa-solid fa-star"></i><sub>(5)</sub></li>
+                                        </ul>
+                                        <p>Responds within 4 hours | Hired by 13 families</p>
+
+                                    </div>
+                                    <div class="pio_content2">
+                                        <a href="#">Book ${data[i].id}</a>
+                                        <a href="#">Message ${data[i].id}</a>
+                                    </div>
+
+                                </div>
+                            </div>`
+
+                wc_info.innerHTML += info;
+
+            }
+
+        });
+
+
+
+    </script>
+
+
+
+
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
+        import { getDatabase, set, ref, push, child } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBNCupcSbQudULeZzaVoIUKhMlPDOm6JHA",
+            authDomain: "wecare-7dcc7.firebaseapp.com",
+            databaseURL: "https://wecare-7dcc7-default-rtdb.firebaseio.com",
+            projectId: "wecare-7dcc7",
+            storageBucket: "wecare-7dcc7.appspot.com",
+            messagingSenderId: "492609910212",
+            appId: "1:492609910212:web:8d7f385e1d9e29e5cb6091"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
