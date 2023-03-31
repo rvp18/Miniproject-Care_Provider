@@ -4,17 +4,6 @@
 
 **T.E. - I.T Engineering** 
 
-**Submitted By** 
-
-**Purvesh Gangapurkar (20104063) Rahul Patil (20104073)** 
-
-**Ambadas Malegave (20104112)** 
-
-**Under The  Guidance Of** 
-
-**Prof. Sonal Jain** 
-
-![](Aspose.Words.9c5e6187-7729-4733-8191-c51d5b7dcbed.002.png)
 
 **DEPARTMENT OF INFORMATION TECHNOLOGY** 
 
@@ -28,27 +17,6 @@ University Of Mumbai
 
 **Academic Year: 2022-23** 
 
-**CERTIFICATE** 
-
-This is to certify that the Mini Project Report on **Customer Relationship Management** has been submitted by Purvesh Gangapurkar (20104063), Rahul Patil(20104073), and Ambadas Malegave (20104112. who are students of A. P. Shah Institute of Technology, Thane, Mumbai, as partial fulfillment of the requirement for the degree in Information Technology, during the academic year 2022-2023 in a satisfactory manner as per the curriculum laid down by the University of Mumbai.
-
-**Prof. Sonal Jain** 
-
-**Guide** 
-
-**Prof. Kiran Deshpande**  **Dr. Uttam D. Kolekar** 
-
-**Head of Department of Information Technology**  **Principal** 
-
-**External Examiner(s): 1.** 
-
-**2.** 
-
-**Place:** A.P Shah Institute of Technology, Thane **Date:** 
-
-**ACKNOWLEDGEMENT** 
-
-This project would not have come to fruition without the invaluable help of our guide **Ms. Sonal Jain.**  Expressing  gratitude  towards  our  **HOD,  Dr.  Kiran  Deshpande,**  and  the  Department  of Information Technology for providing us with the opportunity as well as the support required to pursue this project. We would also like to thank our peers for their helpful suggestions. 
 
 **TABLE OF CONTENTS** 
 
@@ -65,6 +33,10 @@ This project would not have come to fruition without the invaluable help of our 
 5. Implementation…………………………………………………………………...15 
 5. Result and Discussion……………………………………………………………...16 
 5. Conclusion and FutureScope..................................................................................20 
+
+
+
+
 
 References 
 
